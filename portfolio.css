@@ -187,11 +187,8 @@ section {
     letter-spacing: -3px;
 }
 
-.box.a1 h2 span {
-    /* No longer needed as handled by span color or accent color */
-}
-
 .box.a1 p {
+
     color: var(--text-muted);
     font-size: clamp(1rem, 2vw, 1.25rem);
     max-width: 550px;
@@ -217,20 +214,63 @@ section {
     box-shadow: 0 30px 60px -12px rgba(56, 189, 248, 0.5);
 }
 
-.box.a2 img {
-    width: clamp(300px, 40vw, 500px);
-    height: clamp(300px, 40vw, 500px);
-    object-fit: cover;
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-    border: 1px solid var(--glass-border);
-    animation: morph 20s linear infinite;
-    box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.5);
+.box.a2 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-@keyframes morph {
-    0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: rotate(0deg); }
-    50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; transform: rotate(5deg); }
-    100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: rotate(0deg); }
+.image-content {
+    position: relative;
+    width: clamp(350px, 50vw, 600px);
+    height: clamp(350px, 50vw, 600px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.rotating-border {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, transparent, var(--accent), transparent 50%, var(--accent), transparent);
+    animation: rotate-border 6s linear infinite;
+    z-index: 1;
+    padding: 8px; /* Space for the border */
+}
+
+.rotating-border::after {
+    content: '';
+    position: absolute;
+    inset: 4px; /* Thickness of the border */
+    background: var(--bg-dark);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.box.a2 img {
+    width: 94%; /* Slightly smaller than the border */
+    height: 94%;
+    object-fit: cover;
+    border-radius: 50%;
+    position: relative;
+    z-index: 5;
+    border: 4px solid var(--bg-dark);
+    box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.5);
+    transition: var(--transition);
+}
+
+
+.image-content:hover img {
+    transform: scale(1.05);
+}
+
+@keyframes rotate-border {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 /* About Section */
