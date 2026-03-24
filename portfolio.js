@@ -1,4 +1,8 @@
+// Set current year in footer
+document.getElementById('year').textContent = new Date().getFullYear();
+
 const full = document.querySelector("#full");
+
 const email = document.querySelector("#email");
 const sub = document.querySelector("#sub");
 const mes = document.querySelector("#mes");
