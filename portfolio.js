@@ -54,4 +54,12 @@ window.onscroll = () => {
             }
         }
     })
+
+    // Show/hide scroll-top button after 700px
+    const scrollTop = document.querySelector('#scrollTop');
+    if (window.scrollY > 700) {
+        scrollTop.classList.add('active');
+    } else {
+        scrollTop.classList.remove('active');
+    }
 }

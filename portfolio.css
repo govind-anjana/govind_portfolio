@@ -603,10 +603,9 @@ footer {
 
 /* Scroll Top Button */
 .scroll-top {
-    position: absolute;
-    top: -25px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
     width: 50px;
     height: 50px;
     background: var(--accent-gradient);
@@ -619,12 +618,23 @@ footer {
     font-size: 1.2rem;
     box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.4);
     transition: var(--transition);
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+}
+
+.scroll-top.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
 }
 
 .scroll-top:hover {
-    transform: translateX(-50%) translateY(-5px);
+    transform: translateY(-5px);
     box-shadow: 0 15px 20px -5px rgba(56, 189, 248, 0.5);
 }
+
 
 @media (max-width: 768px) {
     footer {
