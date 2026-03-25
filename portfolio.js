@@ -104,25 +104,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     tl.from('header h1', { y: -50, opacity: 0, delay: 0.2 })
       .from('nav ul li', { y: -20, opacity: 0, stagger: 0.1 }, '-=0.5')
-      .from('.box.a1 h2', { x: -50, opacity: 0 }, '-=0.5')
-      .from('.box.a1 h1', { x: -50, opacity: 0 }, '-=0.7')
-      .from('.box.a1 p', { y: 20, opacity: 0 }, '-=0.7')
-      .from('.box.a1 button', { scale: 0.8, opacity: 0 }, '-=0.7')
-      .from('.box.a2 img', { scale: 0.5, opacity: 0, duration: 1.5, ease: 'elastic.out(1, 0.5)' }, '-=1');
+      .from('.box.a1 h2', { x: -100, opacity: 0, duration: 1.2 }, '-=0.5')
+      .from('.box.a1 h1', { x: -100, opacity: 0, duration: 1.2, ease: "back.out(1.7)" }, '-=1')
+      .from('.box.a1 p', { y: 30, opacity: 0, duration: 1 }, '-=0.8')
+      .from('.box.a1 button', { scale: 0.5, opacity: 0, duration: 1, ease: "elastic.out(1, 0.5)" }, '-=0.8')
+      .from('.image-content', { scale: 0, opacity: 0, duration: 1.5, ease: 'expo.out' }, '-=1.2')
+      .from('.box.a2 img', { scale: 0.5, opacity: 0, duration: 1, ease: 'power2.out' }, '-=0.8');
+
+    // Debug: Toggle image visibility to check animation
+    const imageContent = document.querySelector('.image-content');
+    if (imageContent) {
+        imageContent.addEventListener('click', () => {
+            imageContent.classList.toggle('hide-image');
+            console.log('Image visibility toggled for debugging animation.');
+        });
+    }
 
     // Section Reveals
     const sections = ['#about', '#skill', '#project', '#contact'];
     
     sections.forEach(section => {
-        gsap.from(`${section} .h1`, {
+        gsap.from(`${section} > *`, {
             scrollTrigger: {
                 trigger: section,
-                start: 'top 80%',
+                start: 'top 75%',
                 toggleActions: 'play none none none'
             },
-            y: 50,
+            y: 40,
             opacity: 0,
-            duration: 1
+            duration: 1,
+            stagger: 0.1
         });
     });
 

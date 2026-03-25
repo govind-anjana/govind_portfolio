@@ -236,10 +236,11 @@ section {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background: conic-gradient(from 0deg, transparent, var(--accent), transparent 50%, var(--accent), transparent);
-    animation: rotate-border 6s linear infinite;
+    background: conic-gradient(from 0deg, #38bdf8, #818cf8, #c084fc, #38bdf8);
+    animation: rotate-border 4s linear infinite;
     z-index: 1;
-    padding: 8px; /* Space for the border */
+    padding: 8px;
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
 }
 
 .rotating-border::after {
@@ -252,7 +253,7 @@ section {
 }
 
 .box.a2 img {
-    width: 94%; /* Slightly smaller than the border */
+    width: 94%;
     height: 94%;
     object-fit: cover;
     border-radius: 50%;
@@ -261,6 +262,18 @@ section {
     border: 4px solid var(--bg-dark);
     box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.5);
     transition: var(--transition);
+}
+
+/* Debug class to hide image and see animation */
+.image-content.hide-image img {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.image-content.hide-image .rotating-border {
+    width: 100%;
+    height: 100%;
+    padding: 12px;
 }
 
 
