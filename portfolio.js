@@ -124,16 +124,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = ['#about', '#skill', '#project', '#contact'];
     
     sections.forEach(section => {
-        gsap.from(`${section} > *`, {
+        gsap.from(`${section} .h1`, {
             scrollTrigger: {
                 trigger: section,
-                start: 'top 75%',
+                start: 'top 80%',
                 toggleActions: 'play none none none'
             },
-            y: 40,
+            y: 50,
             opacity: 0,
-            duration: 1,
-            stagger: 0.1
+            duration: 1
         });
     });
 

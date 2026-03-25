@@ -223,8 +223,8 @@ section {
 
 .image-content {
     position: relative;
-    width: clamp(350px, 50vw, 600px);
-    height: clamp(350px, 50vw, 600px);
+    width: clamp(280px, 40vw, 450px);
+    height: clamp(280px, 40vw, 450px);
     display: flex;
     justify-content: center;
     align-items: center;
