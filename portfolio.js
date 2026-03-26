@@ -125,106 +125,97 @@ document.addEventListener('DOMContentLoaded', () => {
     // Register ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
 
-    // Initial load animations (Hero Section)
+    // ── PRE-HIDE all scroll-animated elements so they don't flash on reload ──
+    gsap.set([
+        '#about .h1', '#skill .h1', '#project .h1', '#contact .h1',
+        '#about .section .box.a2',
+        '#about .section .a1',
+        '.boxs',
+        '.card',
+        '.contact-info',
+        '.con-mess'
+    ], { opacity: 0 });
+
+    // ── Hero Section: plays once on load (no scroll needed) ──
     const tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 1 } });
-
-    tl.from('header h1', { y: -50, opacity: 0, delay: 0.2 })
-      .from('nav ul li', { y: -20, opacity: 0, stagger: 0.1 }, '-=0.5')
-      .from('.box.a1 h2', { x: -100, opacity: 0, duration: 1.2 }, '-=0.5')
-      .from('.box.a1 h1', { x: -100, opacity: 0, duration: 1.2, ease: "back.out(1.7)" }, '-=1')
-      .from('.box.a1 p', { y: 30, opacity: 0, duration: 1 }, '-=0.8')
-      .from('.box.a1 button', { scale: 0.5, opacity: 0, duration: 1, ease: "elastic.out(1, 0.5)" }, '-=0.8')
+    tl.from('header h1',      { y: -50, opacity: 0, delay: 0.2 })
+      .from('nav ul li',      { y: -20, opacity: 0, stagger: 0.1 }, '-=0.5')
+      .from('.box.a1 h2',     { x: -100, opacity: 0, duration: 1.2 }, '-=0.5')
+      .from('.box.a1 h1',     { x: -100, opacity: 0, duration: 1.2, ease: 'back.out(1.7)' }, '-=1')
+      .from('.box.a1 p',      { y: 30,  opacity: 0, duration: 1 }, '-=0.8')
+      .from('.hero-actions',  { y: 30,  opacity: 0, duration: 1 }, '-=0.7')
       .from('.image-content', { scale: 0, opacity: 0, duration: 1.5, ease: 'expo.out' }, '-=1.2')
-      .from('.box.a2 img', { scale: 0.5, opacity: 0, duration: 1, ease: 'power2.out' }, '-=0.8');
+      .from('.box.a2 img',    { scale: 0.5, opacity: 0, duration: 1, ease: 'power2.out' }, '-=0.8');
 
-    // Debug: Toggle image visibility to check animation
-    const imageContent = document.querySelector('.image-content');
-    if (imageContent) {
-        imageContent.addEventListener('click', () => {
-            imageContent.classList.toggle('hide-image');
-            console.log('Image visibility toggled for debugging animation.');
+    // ── Helper: build a standard scroll-reveal tween ──
+    function reveal(targets, trigger, vars = {}) {
+        gsap.to(targets, {
+            scrollTrigger: {
+                trigger,
+                start: 'top 80%',
+                toggleActions: 'play none none none',
+                once: true
+            },
+            opacity: 1,
+            y: 0,
+            x: 0,
+            scale: 1,
+            duration: vars.duration ?? 1,
+            ease: vars.ease ?? 'power3.out',
+            stagger: vars.stagger ?? 0,
+            ...vars
         });
     }
 
-    // Section Reveals
-    const sections = ['#about', '#skill', '#project', '#contact'];
-    
-    sections.forEach(section => {
-        gsap.from(`${section} .h1`, {
-            scrollTrigger: {
-                trigger: section,
-                start: 'top 80%',
-                toggleActions: 'play none none none'
-            },
-            y: 50,
-            opacity: 0,
-            duration: 1
-        });
+    // ── Section headings ──
+    ['#about', '#skill', '#project', '#contact'].forEach(sec => {
+        reveal(`${sec} .h1`, sec, { y: 50, duration: 1 });
     });
 
-    // About section content
-    gsap.from('#about .section .box.a2', {
-        scrollTrigger: {
-            trigger: '#about',
-            start: 'top 70%'
-        },
-        x: -100,
-        opacity: 0,
-        duration: 1.2
+    // ── About section ──
+    gsap.set('#about .section .box.a2', { x: -100, opacity: 0 });
+    gsap.to('#about .section .box.a2', {
+        scrollTrigger: { trigger: '#about', start: 'top 75%', once: true,
+            toggleActions: 'play none none none' },
+        opacity: 1, x: 0, duration: 1.2, ease: 'power3.out'
     });
 
-    gsap.from('#about .section .a1', {
-        scrollTrigger: {
-            trigger: '#about',
-            start: 'top 70%'
-        },
-        x: 100,
-        opacity: 0,
-        duration: 1.2
+    gsap.set('#about .section .a1', { x: 100, opacity: 0 });
+    gsap.to('#about .section .a1', {
+        scrollTrigger: { trigger: '#about', start: 'top 75%', once: true,
+            toggleActions: 'play none none none' },
+        opacity: 1, x: 0, duration: 1.2, ease: 'power3.out'
     });
 
-    // Skill cards staggered reveal
-    gsap.from('.boxs', {
-        scrollTrigger: {
-            trigger: '#skill',
-            start: 'top 70%'
-        },
-        y: 60,
-        opacity: 0,
-        stagger: 0.2,
-        duration: 1
+    // ── Skills cards ──
+    gsap.set('.boxs', { y: 60, opacity: 0 });
+    gsap.to('.boxs', {
+        scrollTrigger: { trigger: '#skill', start: 'top 75%', once: true,
+            toggleActions: 'play none none none' },
+        opacity: 1, y: 0, stagger: 0.2, duration: 1, ease: 'power3.out'
     });
 
-    // Project cards reveal
-    gsap.from('.card', {
-        scrollTrigger: {
-            trigger: '#project',
-            start: 'top 70%'
-        },
-        scale: 0.9,
-        opacity: 0,
-        stagger: 0.3,
-        duration: 1
+    // ── Project cards ──
+    gsap.set('.card', { scale: 0.88, opacity: 0 });
+    gsap.to('.card', {
+        scrollTrigger: { trigger: '#project', start: 'top 75%', once: true,
+            toggleActions: 'play none none none' },
+        opacity: 1, scale: 1, stagger: 0.2, duration: 1, ease: 'power3.out'
     });
 
-    // Contact sections reveal
-    gsap.from('.contact-info', {
-        scrollTrigger: {
-            trigger: '#contact',
-            start: 'top 70%'
-        },
-        x: -50,
-        opacity: 0,
-        duration: 1
+    // ── Contact panels ──
+    gsap.set('.contact-info', { x: -60, opacity: 0 });
+    gsap.to('.contact-info', {
+        scrollTrigger: { trigger: '#contact', start: 'top 78%', once: true,
+            toggleActions: 'play none none none' },
+        opacity: 1, x: 0, duration: 1, ease: 'power3.out'
     });
 
-    gsap.from('.con-mess', {
-        scrollTrigger: {
-            trigger: '#contact',
-            start: 'top 70%'
-        },
-        x: 50,
-        opacity: 0,
-        duration: 1
+    gsap.set('.con-mess', { x: 60, opacity: 0 });
+    gsap.to('.con-mess', {
+        scrollTrigger: { trigger: '#contact', start: 'top 78%', once: true,
+            toggleActions: 'play none none none' },
+        opacity: 1, x: 0, duration: 1, ease: 'power3.out'
     });
 });
+

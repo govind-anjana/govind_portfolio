@@ -20,6 +20,10 @@
     font-family: 'Inter', sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
 body {
     background-color: var(--bg-dark);
     color: var(--text-main);
@@ -62,6 +66,12 @@ body {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
+}
+
+/* Scroll-reveal: elements start hidden, GSAP reveals on scroll */
+.scroll-hidden {
+    opacity: 0;
+    transform: translateY(40px);
 }
 
 
