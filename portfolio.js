@@ -1,6 +1,32 @@
 // Set current year in footer
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// Typing Animation
+const typedTextEl = document.getElementById('typed-text');
+const roles = ['MERN Stack Developer', 'Full Stack Developer', 'React Developer', 'Node.js Developer'];
+let roleIndex = 0, charIndex = 0, isDeleting = false;
+
+function typeEffect() {
+    const current = roles[roleIndex];
+    if (isDeleting) {
+        typedTextEl.textContent = current.substring(0, charIndex--);
+    } else {
+        typedTextEl.textContent = current.substring(0, charIndex++);
+    }
+    let delay = isDeleting ? 60 : 100;
+    if (!isDeleting && charIndex === current.length + 1) {
+        delay = 1800;
+        isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        delay = 400;
+    }
+    setTimeout(typeEffect, delay);
+}
+typeEffect();
+
+
 // Initialize Lenis for Smooth Scrolling
 const lenis = new Lenis({
     duration: 1.2,

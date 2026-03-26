@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="portfolio.css"> 
+    <meta name="description" content="Govind Anjana – MERN Stack Developer. Passionate about building scalable web applications and seamless user experiences.">
     <title>Govind Anjana | Portfolio</title>
 </head>
 <body>
@@ -37,11 +41,20 @@
             <div class="box a1">
                 <h2>Hello, It's Me</h2>
                 <h1>Govind Anjana</h1>
-                <h2>And I'm a <span>MERN Stack Developer</span></h2>
+                <h2>And I'm a <span id="typed-text">MERN Stack Developer</span><span class="typed-cursor">|</span></h2>
                 <p>
                     Passionate about building scalable web applications and creating seamless user experiences using modern technologies.
                 </p>
-                <button onclick="window.open('images/New Resume Govind.pdf', '_blank')">View Resume</button>
+                <div class="hero-actions">
+                    <button onclick="window.open('images/New Resume Govind.pdf', '_blank')">
+                        <i class="fa-solid fa-file-arrow-down"></i> View Resume
+                    </button>
+                    <div class="hero-socials">
+                        <a href="#" title="LinkedIn" class="social-pill"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#" title="GitHub" class="social-pill"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" title="WhatsApp" class="social-pill"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
             </div>
             <div class="box a2">
                 <div class="image-content">
@@ -60,6 +73,11 @@
                 </div>
                 <div class="a1">
                     <h2>Full Stack Development</h2>
+                    <div class="about-badges">
+                        <span class="badge"><i class="fa-solid fa-graduation-cap"></i> BCA Graduate</span>
+                        <span class="badge"><i class="fa-solid fa-code"></i> MERN Stack</span>
+                        <span class="badge"><i class="fa-solid fa-bolt"></i> Open to Work</span>
+                    </div>
                     <p>
                         Hello! I’m Govind Anjana, a passionate web developer with a Bachelor’s degree in Computer Applications (BCA). I specialize in front-end development with HTML, CSS, JavaScript, and React, while also building robust back-end systems.
                         <br><br>
@@ -107,8 +125,16 @@
                 <div class="card">
                     <div class="cover">
                         <img src="https://images.pexels.com/photos/6273274/pexels-photo-6273274.jpeg?auto=compress&cs=tinysrgb&w=600" alt="E-Commerce Project">
+                        <div class="card-overlay">
+                            <a href="#" class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Project</a>
+                        </div>
                     </div>
                     <div class="content">
+                        <div class="card-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">MongoDB</span>
+                        </div>
                         <h1>E-Commerce Platform</h1>
                         <p>
                             A full-featured electronic commerce solution for buying and selling products online. Features include product listings, shopping cart, and secure checkout.
@@ -119,8 +145,16 @@
                 <div class="card">
                     <div class="cover">
                         <img src="https://images.pexels.com/photos/6913396/pexels-photo-6913396.jpeg?auto=compress&cs=tinysrgb&w=600" alt="BikeKharido Project">
+                        <div class="card-overlay">
+                            <a href="#" class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Project</a>
+                        </div>
                     </div>
                     <div class="content">
+                        <div class="card-tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
                         <h1>BikeKharido</h1>
                         <p>
                             A comprehensive portal for bike information in India. Provides the latest news, specifications, and comparisons for motorcycle enthusiasts.
@@ -168,7 +202,7 @@
                         <input type="text" id="full" required placeholder="Full Name">
                         <input type="email" id="email" required placeholder="Email Address">
                         <input type="text" id="sub" placeholder="Subject">
-                        <input type="text" id="mes" placeholder="Your Message">
+                        <textarea id="mes" placeholder="Your Message" rows="4"></textarea>
                         <button type="submit">Send Message</button> 
                     </form>
                 </div>
