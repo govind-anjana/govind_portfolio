@@ -292,6 +292,7 @@ section {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+    opacity: 0; /* Pre-hide to avoid flash on refresh */
 }
 
 .rotating-border {
@@ -325,6 +326,7 @@ section {
     border: 4px solid var(--bg-dark);
     box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.5);
     transition: var(--transition);
+    opacity: 0; /* Pre-hide to avoid flash on refresh */
 }
 
 /* Debug class to hide image and see animation */

@@ -133,19 +133,25 @@ document.addEventListener('DOMContentLoaded', () => {
         '.boxs',
         '.card',
         '.contact-info',
-        '.con-mess'
+        '.con-mess',
+        '.image-content', '.box.a2 img'
     ], { opacity: 0 });
 
     // ── Hero Section: plays once on load (no scroll needed) ──
     const tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 1 } });
+    
+    // Set initial transform states for hero elements
+    gsap.set('.image-content', { scale: 0.8 });
+    gsap.set('.box.a2 img', { scale: 0.6 });
+
     tl.from('header h1',      { y: -50, opacity: 0, delay: 0.2 })
       .from('nav ul li',      { y: -20, opacity: 0, stagger: 0.1 }, '-=0.5')
       .from('.box.a1 h2',     { x: -100, opacity: 0, duration: 1.2 }, '-=0.5')
       .from('.box.a1 h1',     { x: -100, opacity: 0, duration: 1.2, ease: 'back.out(1.7)' }, '-=1')
       .from('.box.a1 p',      { y: 30,  opacity: 0, duration: 1 }, '-=0.8')
       .from('.hero-actions',  { y: 30,  opacity: 0, duration: 1 }, '-=0.7')
-      .from('.image-content', { scale: 0, opacity: 0, duration: 1.5, ease: 'expo.out' }, '-=1.2')
-      .from('.box.a2 img',    { scale: 0.5, opacity: 0, duration: 1, ease: 'power2.out' }, '-=0.8');
+      .to('.image-content',   { scale: 1, opacity: 1, duration: 1.5, ease: 'expo.out' }, '-=1.2')
+      .to('.box.a2 img',      { scale: 1, opacity: 1, duration: 1.5, ease: 'power2.out', delay: 0.5 }, '-=0.8');
 
     // ── Helper: build a standard scroll-reveal tween ──
     function reveal(targets, trigger, vars = {}) {
