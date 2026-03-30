@@ -399,11 +399,31 @@ section {
     box-shadow: 0 25px 50px -10px rgba(56, 189, 248, 0.45);
 }
 
-/* About Section */
-#about .section {
+#about .box.a2 {
+    perspective: 1000px;
+}
+
+.about-image-wrapper {
+    position: relative;
+    padding: 20px;
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 6rem;
+}
+
+.about-glow {
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, transparent 70%);
+    z-index: 0;
+    filter: blur(40px);
+    animation: pulse-glow 4s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.1); }
 }
 
 #about .box.a2 img {
@@ -416,7 +436,10 @@ section {
     transform: rotate(-2deg);
     transition: var(--transition);
     box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.6);
-    animation: float 6s ease-in-out infinite; /* Added floating design */
+    animation: float 6s ease-in-out infinite;
+    position: relative;
+    z-index: 1;
+    background: var(--bg-card);
 }
 
 @keyframes float {
@@ -426,6 +449,7 @@ section {
 
 #about .box.a2 img:hover {
     transform: rotate(0deg) scale(1.02);
+    border-color: var(--accent);
 }
 
 #about .a1 h2 {
@@ -517,10 +541,23 @@ section {
 }
 
 /* Project Section */
-.main {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-    gap: 4.5rem;
+#project {
+    padding-top: 10rem;
+    padding-bottom: 15rem;
+    overflow: hidden;
+}
+
+.project-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+#project .main {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 5rem;
+    padding: 2rem 0;
+    width: fit-content;
 }
 
 .card {
@@ -531,7 +568,10 @@ section {
     border: 1px solid var(--glass-border);
     transition: var(--transition);
     height: 620px;
+    width: 500px;
+    flex-shrink: 0;
     box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
 }
 
 .card:hover {

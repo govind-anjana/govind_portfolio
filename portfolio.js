@@ -201,13 +201,28 @@ document.addEventListener('DOMContentLoaded', () => {
         opacity: 1, y: 0, stagger: 0.2, duration: 1, ease: 'power3.out'
     });
 
-    // ── Project cards ──
-    gsap.set('.card', { scale: 0.88, opacity: 0 });
-    gsap.to('.card', {
-        scrollTrigger: { trigger: '#project', start: 'top 75%', once: true,
-            toggleActions: 'play none none none' },
-        opacity: 1, scale: 1, stagger: 0.2, duration: 1, ease: 'power3.out'
-    });
+    // ── Horizontal Scroll Projects ──
+    const projectMain = document.querySelector('#project .main');
+    if (projectMain) {
+        const cards = gsap.utils.toArray('.card');
+        
+        gsap.to(projectMain, {
+            x: () => -(projectMain.scrollWidth - window.innerWidth + window.innerWidth * 0.1),
+            ease: "none",
+            scrollTrigger: {
+                trigger: "#project",
+                pin: true,
+                scrub: 1,
+                start: "top top",
+                end: () => "+=" + projectMain.scrollWidth,
+                invalidateOnRefresh: true,
+            }
+        });
+
+        // Simple reveal for cards
+        gsap.set('.card', { opacity: 0, y: 30 });
+        reveal('.card', '#project', { y: 0, stagger: 0.1, delay: 0.5 });
+    }
 
     // ── Contact panels ──
     gsap.set('.contact-info', { x: -60, opacity: 0 });
