@@ -37,9 +37,10 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Simple entry animation for the 404 page content
-            gsap.from('.not-found-content', {
-                opacity: 0,
-                y: 50,
+            gsap.to('.not-found-content', {
+                opacity: 1,
+                y: 0,
+                scale: 1,
                 duration: 1,
                 ease: 'power3.out'
             });
