@@ -407,13 +407,21 @@ section {
 }
 
 #about .box.a2 img {
-    width: 450px;
-    height: 550px;
-    border-radius: 2rem;
-    animation: none;
+    width: 100%;
+    max-width: 500px;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 2.5rem;
     border: 1px solid var(--glass-border);
     transform: rotate(-2deg);
     transition: var(--transition);
+    box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.6);
+    animation: float 6s ease-in-out infinite; /* Added floating design */
+}
+
+@keyframes float {
+    0%, 100% { transform: rotate(-2deg) translateY(0); }
+    50% { transform: rotate(-1deg) translateY(-15px); }
 }
 
 #about .box.a2 img:hover {
@@ -511,19 +519,19 @@ section {
 /* Project Section */
 .main {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 4rem;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 4.5rem;
 }
 
 .card {
     background: var(--bg-card);
-    border-radius: 2rem;
+    border-radius: 2.5rem;
     overflow: hidden;
     position: relative;
     border: 1px solid var(--glass-border);
     transition: var(--transition);
-    height: 550px;
-    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3);
+    height: 620px;
+    box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.4);
 }
 
 .card:hover {
