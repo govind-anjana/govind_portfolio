@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="portfolio.css"> 
+    <title>404 - Page Lost in Space | Govind Anjana</title>
+</head>
+<body>
+    <div class="bg-elements">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <main class="not-found-container">
+        <div class="not-found-content">
+            <div class="not-found-img-container">
+                <img src="images/404-lost.png" alt="Lost in Space Illustration">
+            </div>
+            <h1 class="not-found-title">404</h1>
+            <h2 class="not-found-subtitle">Lost in Space?</h2>
+            <p class="not-found-text">
+                The page you are looking for has drifted away into the void. It might have been moved, deleted, or never existed in this dimension.
+            </p>
+            <a href="index.html" class="back-home-btn">
+                <i class="fa-solid fa-house"></i> Return to Home
+            </a>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Simple entry animation for the 404 page content
+            gsap.from('.not-found-content', {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                ease: 'power3.out'
+            });
+            
+            gsap.from('.bg-elements .blob', {
+                opacity: 0,
+                scale: 0.5,
+                stagger: 0.2,
+                duration: 2,
+                ease: 'power2.out'
+            });
+        });
+    </script>
+</body>
+</html>

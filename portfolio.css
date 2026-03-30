@@ -998,3 +998,103 @@ footer {
         gap: 1.5rem;
     }
 }
+
+/* 404 Not Found Page Styles */
+.not-found-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+.not-found-content {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    padding: 4rem;
+    border-radius: 3rem;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.5);
+    animation: scale-up 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes scale-up {
+    from { opacity: 0; transform: scale(0.9) translateY(30px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.not-found-img-container {
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.not-found-img-container img {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 2rem;
+    animation: float-alt 8s ease-in-out infinite;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes float-alt {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-20px) rotate(2deg); }
+    50% { transform: translateY(0) rotate(0deg); }
+    75% { transform: translateY(10px) rotate(-2deg); }
+}
+
+.not-found-title {
+    font-size: clamp(4rem, 15vw, 8rem);
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: -4px;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+}
+
+.not-found-subtitle {
+    font-size: 1.8rem;
+    color: var(--text-main);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.not-found-text {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.back-home-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1.2rem 3.5rem;
+    background: var(--accent-gradient);
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 1.2rem;
+    text-decoration: none;
+    transition: var(--transition);
+    box-shadow: 0 20px 40px -10px rgba(56, 189, 248, 0.4);
+}
+
+.back-home-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 30px 60px -12px rgba(56, 189, 248, 0.5);
+}
